@@ -1,0 +1,2 @@
+# EduNeural
+Educational neural network
