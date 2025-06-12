@@ -1,2 +1,1 @@
-# EduNeural
-Educational neural network
+# ChemG
