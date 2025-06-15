@@ -9,7 +9,6 @@ import {
   Beaker, 
   Settings,
   X,
-  Sparkles,
   MessageCircle
 } from 'lucide-react';
 
@@ -57,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="p-2 bg-blue-500 rounded-xl">
-                <Sparkles className="w-5 h-5 text-white" />
+                <FlaskConical className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h1 className="text-lg font-semibold text-gray-900 dark:text-white">ChemG</h1>
@@ -137,7 +136,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="p-2 bg-blue-500 rounded-xl">
-                  <Sparkles className="w-5 h-5 text-white" />
+                  <FlaskConical className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h1 className="text-lg font-semibold text-gray-900 dark:text-white">ChemG</h1>

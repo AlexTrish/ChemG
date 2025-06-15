@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, EyeOff, Sparkles, Mail } from 'lucide-react';
+import { Eye, EyeOff, FlaskConical, Mail } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 
@@ -87,7 +87,7 @@ const AuthScreen: React.FC = () => {
             className="inline-flex items-center space-x-3 mb-4"
           >
             <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl">
-              <Sparkles className="w-8 h-8 text-white" />
+              <FlaskConical className="w-8 h-8 text-white" />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">ChemG</h1>

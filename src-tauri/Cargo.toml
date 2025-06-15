@@ -2,7 +2,7 @@
 name = "chemg"
 version = "0.0.0"
 description = "ChemG - Изучение химии через игру"
-authors = ["you"]
+authors = ["AlexTrish"]
 license = ""
 repository = ""
 default-run = "chemg"
