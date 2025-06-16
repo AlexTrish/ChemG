@@ -15,7 +15,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, darkMode, onThemeToggle })
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const isTauri = !!(window as any).__TAURI__;
 
   const handleLogout = () => {
     logout();
@@ -37,7 +36,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, darkMode, onThemeToggle })
       initial={{ y: -10, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 px-6 py-4"
-      {...(isTauri ? { 'data-tauri-drag-region': true } : {})}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
@@ -136,22 +134,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, darkMode, onThemeToggle })
               )}
             </AnimatePresence>
           </div>
-
-          {isTauri && (
-            <div className="flex items-center space-x-1 ml-2">
-              {/* Кнопки управления окном */}
-              <button
-                className="w-3 h-3 rounded-full bg-yellow-400 hover:bg-yellow-500"
-                title="Свернуть"
-                onClick={() => (window as any).__TAURI__.window.appWindow.minimize()}
-              />
-              <button
-                className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600"
-                title="Закрыть"
-                onClick={() => (window as any).__TAURI__.window.appWindow.close()}
-              />
-            </div>
-          )}
         </div>
       </div>
 

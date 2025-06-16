@@ -94,7 +94,7 @@ const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto h-[calc(100vh-10rem)] overflow-auto px-2 scrollbar-none">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

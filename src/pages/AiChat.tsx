@@ -96,7 +96,7 @@ const AiChat: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto h-full flex flex-col">
+    <div className="max-w-6xl mx-auto h-[calc(100vh-10rem)] flex flex-col overflow-auto px-2">
       {/* Заголовок */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

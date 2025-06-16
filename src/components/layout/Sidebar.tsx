@@ -65,7 +65,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   // Показываем sidebar всегда на больших экранах, с анимацией только на мобильных
   if (isLargeScreen) {
     return (
-      <aside className="fixed lg:static inset-y-0 left-0 z-50 w-70 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 lg:block">
+      <aside className="w-70 h-[calc(100vh-2.5rem)] bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 flex-shrink-0">
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-800">
             <motion.div 

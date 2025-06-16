@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Toaster, toast } from 'react-hot-toast';
 import { getLevelInfo } from './modules/experience';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthScreen from './components/auth/AuthScreen';
 import Layout from './components/layout/Layout';
+import Titlebar from './components/layout/Titlebar';
 import Dashboard from './pages/Dashboard';
 import OrganicChemistry from './pages/OrganicChemistry';
 import InorganicChemistry from './pages/InorganicChemistry';
@@ -14,6 +15,10 @@ import Experiments from './pages/Experiments';
 import Profile from './pages/Profile';
 import AiChat from './pages/AiChat';
 import Settings from './pages/Settings';
+import SingleChoiceTest, { TestResults as SingleTestResults } from './components/tests/SingleChoiceTest';
+import MultipleChoiceTest, { TestResults as MultipleTestResults } from './components/tests/MultipleChoiceTest';
+import TextInputTest, { TestResults as TextInputTestResults } from './components/tests/TextInputTest';
+import NotesTemplate from './components/notes/NotesTemplate';
 import './index.css';
 
 // Cookie helpers
@@ -28,26 +33,73 @@ function getCookie(name: string) {
   }, '');
 }
 
-const AppContent: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAuth();
+// Пример JSON для теста (SingleChoice)
+const testExampleData = {
+  title: "Пример теста по химии",
+  questions: [
+    {
+      id: "q1",
+      question: "Какой элемент обозначается символом H?",
+      options: ["Водород", "Гелий", "Кислород", "Азот"],
+      correctAnswer: "Водород"
+    },
+    {
+      id: "q2",
+      question: "Сколько протонов у атома углерода?",
+      options: ["6", "8", "12", "14"],
+      correctAnswer: "6"
+    }
+  ]
+};
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400">Загрузка...</p>
-        </div>
-      </div>
-    );
-  }
+// Пример JSON для конспекта
+const notesExampleData = {
+  title: "Органическая химия: Введение",
+  subject: "Органическая химия",
+  sections: [
+    {
+      id: "s1",
+      title: "Что такое органическая химия?",
+      content: "Органическая химия — это раздел химии, изучающий соединения углерода.",
+      type: "text"
+    },
+    {
+      id: "s2",
+      title: "Пример формулы",
+      content: "C6H12O6",
+      type: "formula"
+    },
+    {
+      id: "s3",
+      title: "Таблица элементов",
+      content: "<table><tr><td>H</td><td>1</td></tr><tr><td>C</td><td>6</td></tr></table>",
+      type: "table"
+    },
+    {
+      id: "s4",
+      title: "Изображение молекулы",
+      content: "https://upload.wikimedia.org/wikipedia/commons/8/88/Glucose_Haworth.png",
+      type: "image"
+    }
+  ]
+};
+
+const AppContent: React.FC = () => {
+  const { isAuthenticated } = useAuth();
+  const location = useLocation();
 
   if (!isAuthenticated) {
     return <AuthScreen />;
   }
 
+  const handleTestComplete = (results: SingleTestResults | MultipleTestResults | TextInputTestResults) => {};
+  const handleNotesBack = () => {};
+
+  const isNotesPage = location.pathname === '/notes-example';
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className={`h-[100vh] overflow-hidden bg-gray-50 dark:bg-gray-900${isNotesPage ? '' : ' select-none'}`}>
+      <Titlebar />
       <Layout>
         <motion.div
           initial={{ opacity: 0 }}
@@ -63,6 +115,28 @@ const AppContent: React.FC = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/ai-chat" element={<AiChat />} />
             <Route path="/settings" element={<Settings />} />
+            <Route
+              path="/test-example"
+              element={
+                <SingleChoiceTest
+                  title={testExampleData.title}
+                  questions={testExampleData.questions}
+                  onComplete={handleTestComplete}
+                  onExit={handleNotesBack}
+                />
+              }
+            />
+            <Route
+              path="/notes-example"
+              element={
+                <NotesTemplate
+                  title={notesExampleData.title}
+                  subject={notesExampleData.subject}
+                  sections={notesExampleData.sections}
+                  onBack={handleNotesBack}
+                />
+              }
+            />
           </Routes>
         </motion.div>
       </Layout>
