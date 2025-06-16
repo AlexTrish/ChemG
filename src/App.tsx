@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Toaster } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
+import { getLevelInfo } from './modules/experience';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthScreen from './components/auth/AuthScreen';
 import Layout from './components/layout/Layout';
@@ -14,6 +15,18 @@ import Profile from './pages/Profile';
 import AiChat from './pages/AiChat';
 import Settings from './pages/Settings';
 import './index.css';
+
+// Cookie helpers
+function setCookie(name: string, value: string, days: number) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+}
+function getCookie(name: string) {
+  return document.cookie.split('; ').reduce((r, v) => {
+    const parts = v.split('=');
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+  }, '');
+}
 
 const AppContent: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -58,27 +71,54 @@ const AppContent: React.FC = () => {
 };
 
 function App() {
+  // TODO: Получайте experience из глобального состояния или API
+  const [experience, setExperience] = React.useState('0');
+  const numericExperience = Number(experience.toString().replace(/\D/g, '')) || 0;
+  const [levelInfo, setLevelInfo] = React.useState(() => getLevelInfo(numericExperience));
+  const prevLevelRef = React.useRef(levelInfo.level);
+
+  React.useEffect(() => {
+    const cookieLevel = Number(getCookie('user_level')) || 1;
+    prevLevelRef.current = cookieLevel;
+  }, []);
+
+  React.useEffect(() => {
+    const info = getLevelInfo(numericExperience);
+    setLevelInfo(info);
+
+    if (info.level > prevLevelRef.current) {
+      toast.success(`Поздравляем! Новый уровень: ${info.level}`);
+      setCookie('user_level', String(info.level), 7);
+    } else if (info.level !== prevLevelRef.current) {
+      setCookie('user_level', String(info.level), 7);
+    }
+    prevLevelRef.current = info.level;
+  }, [numericExperience]);
+
   return (
-    <AuthProvider>
-      <Router>
-        <AppContent />
-        <Toaster 
-          position="top-center"
-          toastOptions={{
-            duration: 2000,
-            style: {
-              background: '#ffffff',
-              color: '#1f2937',
-              borderRadius: '12px',
-              padding: '12px 16px',
-              fontSize: '14px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-              border: '1px solid #e5e7eb',
-            },
-          }}
-        />
-      </Router>
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <Router>
+          <AppContent />
+          <Toaster 
+            position="top-center"
+            toastOptions={{
+              duration: 2000,
+              style: {
+                background: '#ffffff',
+                color: '#1f2937',
+                borderRadius: '12px',
+                padding: '12px 16px',
+                fontSize: '14px',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                border: '1px solid #e5e7eb',
+              },
+            }}
+          />
+        </Router>
+      </AuthProvider>
+      <Toaster />
+    </>
   );
 }
 

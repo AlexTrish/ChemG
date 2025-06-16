@@ -1,49 +1,83 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Atom, 
-  FlaskConical, 
-  TableProperties, 
-  Beaker,
-  Award,
-  Target,
-  Clock,
-  TrendingUp
-} from 'lucide-react';
+import { Atom, FlaskConical, TableProperties, Beaker, Award, Target, Clock, TrendingUp } from 'lucide-react';
 import ModuleCard from '../components/cards/ModuleCard';
+
+const defaultModuleInfo = {
+  inorganic: {
+    progress: 0,
+    difficulty: 'Начальный' as const,
+    lessons: 0,
+  },
+  organic: {
+    progress: 0,
+    difficulty: 'Начальный' as const,
+    lessons: 0,
+  },
+  periodictable: {
+    progress: 0,
+    difficulty: 'Начальный' as const,
+    lessons: 0,
+  },
+  experiments: {
+    progress: 0,
+    difficulty: 'Начальный' as const,
+    lessons: 0,
+  },
+};
+
+// TODO: Replace defaultModuleInfo with data from API (/user/info)
+const moduleInfo = defaultModuleInfo;
+
+const defaultStats = {
+  experience: '0',
+  days: '0',
+  time: '0ч',
+  progress: '0%',
+};
+
+// TODO: Replace defaultStats with data from API (/user/info)
+const userStats = defaultStats;
+
+const stats = [
+  { label: 'Всего XP', value: userStats.experience, icon: Award, color: 'text-yellow-600' },
+  { label: 'Дней подряд', value: userStats.days, icon: Target, color: 'text-green-600' },
+  { label: 'Время изучения', value: userStats.time, icon: Clock, color: 'text-blue-600' },
+  { label: 'Прогресс', value: userStats.progress, icon: TrendingUp, color: 'text-purple-600' },
+];
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   const modules = [
     {
-      title: 'Органическая химия',
-      description: 'Изучите увлекательный мир углеродных соединений, углеводородов и органических реакций.',
-      icon: Atom,
-      progress: 65,
-      difficulty: 'Средний' as const,
-      lessons: 24,
-      color: 'bg-blue-500',
-      path: '/organic',
-    },
-    {
       title: 'Неорганическая химия',
       description: 'Освойте принципы неорганических соединений, координационных комплексов и металлургии.',
       icon: FlaskConical,
-      progress: 40,
-      difficulty: 'Продвинутый' as const,
-      lessons: 18,
+      progress: moduleInfo.inorganic.progress,
+      difficulty: moduleInfo.inorganic.difficulty,
+      lessons: moduleInfo.inorganic.lessons,
       color: 'bg-purple-500',
       path: '/inorganic',
+    },
+    {
+      title: 'Органическая химия',
+      description: 'Изучите увлекательный мир углеродных соединений, углеводородов и органических реакций.',
+      icon: Atom,
+      progress: moduleInfo.organic.progress,
+      difficulty: moduleInfo.organic.difficulty,
+      lessons: moduleInfo.organic.lessons,
+      color: 'bg-blue-500',
+      path: '/organic',
     },
     {
       title: 'Таблица Менделеева',
       description: 'Интерактивный исследователь периодической таблицы со свойствами элементов.',
       icon: TableProperties,
-      progress: 85,
-      difficulty: 'Начальный' as const,
-      lessons: 12,
+      progress: moduleInfo.periodictable.progress,
+      difficulty: moduleInfo.periodictable.difficulty,
+      lessons: moduleInfo.periodictable.lessons,
       color: 'bg-green-500',
       path: '/periodic',
     },
@@ -51,19 +85,12 @@ const Dashboard: React.FC = () => {
       title: 'Эксперименты',
       description: 'Виртуальная химическая лаборатория с безопасными интерактивными экспериментами.',
       icon: Beaker,
-      progress: 20,
-      difficulty: 'Средний' as const,
-      lessons: 15,
+      progress: moduleInfo.experiments.progress,
+      difficulty: moduleInfo.experiments.difficulty,
+      lessons: moduleInfo.experiments.lessons,
       color: 'bg-orange-500',
       path: '/experiments',
     },
-  ];
-
-  const stats = [
-    { label: 'Всего XP', value: '1,250', icon: Award, color: 'text-yellow-600' },
-    { label: 'Дней подряд', value: '7', icon: Target, color: 'text-green-600' },
-    { label: 'Время изучения', value: '24ч', icon: Clock, color: 'text-blue-600' },
-    { label: 'Прогресс', value: '+15%', icon: TrendingUp, color: 'text-purple-600' },
   ];
 
   return (

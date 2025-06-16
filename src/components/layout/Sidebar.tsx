@@ -11,6 +11,7 @@ import {
   X,
   MessageCircle
 } from 'lucide-react';
+import { getLevelInfo } from '../../modules/experience';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -27,8 +28,24 @@ const navigationItems = [
   { name: 'Настройки', href: '/settings', icon: Settings },
 ];
 
+// TODO: Replace defaultExperience with data from API (/user/info)
+const defaultExperience = '0';
+const experience = defaultExperience;
+
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const location = useLocation();
+
+  // Определяем уровень пользователя
+  const numericExperience = Number(experience.toString().replace(/\D/g, '')) || 0;
+  const [levelInfo, setLevelInfo] = React.useState(() => getLevelInfo(numericExperience));
+  const prevLevelRef = React.useRef(levelInfo.level);
+
+  React.useEffect(() => {
+    const info = getLevelInfo(numericExperience);
+    setLevelInfo(info);
+
+    prevLevelRef.current = info.level;
+  }, [numericExperience]);
 
   const [isLargeScreen, setIsLargeScreen] = React.useState(
     typeof window !== 'undefined' ? window.innerWidth >= 1024 : false
@@ -105,12 +122,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm font-medium text-gray-900 dark:text-white">Уровень 3</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white">
+                  Уровень {levelInfo.level}
+                </span>
               </div>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
                 <div className="bg-blue-500 h-1.5 rounded-full" style={{ width: '60%' }}></div>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">1,250 XP</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{experience} XP</p>
             </div>
           </div>
         </div>
@@ -185,12 +204,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <div className="flex items-center space-x-2 mb-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">Уровень 3</span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                    Уровень {levelInfo.level}
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
                   <div className="bg-blue-500 h-1.5 rounded-full" style={{ width: '60%' }}></div>
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">1,250 XP</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{experience} XP</p>
               </div>
             </div>
           </div>
