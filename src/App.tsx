@@ -10,7 +10,7 @@ import Titlebar from './components/layout/Titlebar';
 import Dashboard from './pages/Dashboard';
 import OrganicChemistry from './pages/OrganicChemistry';
 import InorganicChemistry from './pages/InorganicChemistry';
-import PeriodicTable from './pages/PeriodicTable';
+import PeriodicTable from './pages/PeriodicTableSoon';
 import Experiments from './pages/Experiments';
 import Profile from './pages/Profile';
 import AiChat from './pages/AiChat';
