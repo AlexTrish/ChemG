@@ -2,15 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Beaker, Play, BookOpen, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import ChemistryLab3D from '../components/lab/ChemistryLab3D';
 
 const Experiments: React.FC = () => {
   const navigate = useNavigate();
-  const [currentView, setCurrentView] = React.useState<'menu' | 'lab3d'>('menu');
-
-  if (currentView === 'lab3d') {
-    return <ChemistryLab3D />;
-  }
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -42,7 +36,6 @@ const Experiments: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           whileHover={{ scale: 1.02 }}
           className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 cursor-pointer"
-          onClick={() => setCurrentView('lab3d')}
         >
           <div className="flex items-center space-x-4 mb-4">
             <div className="p-3 bg-orange-100 dark:bg-orange-900/20 rounded-xl">
