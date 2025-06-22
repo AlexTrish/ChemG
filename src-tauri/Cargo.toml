@@ -1,6 +1,6 @@
 [package]
 name = "chemg"
-version = "0.0.2"
+version = "0.0.4"
 description = "ChemG - Изучение химии через игру"
 authors = ["AlexTrish"]
 license = ""

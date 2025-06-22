@@ -19,7 +19,7 @@ const Titlebar: React.FC = () => {
 
   return (
     <div
-      className="w-full h-10 flex items-center justify-between px-4 text-sm select-none bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
+      className="w-full h-10  flex items-center justify-between px-4 text-sm select-none bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
       {...(isTauri ? { 'data-tauri-drag-region': true } : {})}
     >
       <div className="flex-1 text-center ml-[10vw] mt-auto mb-auto text-gray-800 dark:text-gray-100 font-bold" {...(isTauri ? { 'data-tauri-drag-region': true } : {})}>
@@ -32,7 +32,7 @@ const Titlebar: React.FC = () => {
       >
         <button
           onClick={() => appWindow.minimize()}
-          className="w-8 h-8 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          className="w-8 h-8 flex items-center justify-center rounded text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
           {...(isTauri ? { 'data-tauri-drag-region': false } : {})}
           title="Свернуть"
         >
@@ -40,7 +40,7 @@ const Titlebar: React.FC = () => {
         </button>
         <button
           onClick={toggleMaximize}
-          className="w-8 h-8 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          className="w-8 h-8 flex items-center justify-center rounded text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
           {...(isTauri ? { 'data-tauri-drag-region': false } : {})}
           title="Полноэкранный режим"
         >
@@ -48,7 +48,7 @@ const Titlebar: React.FC = () => {
         </button>
         <button
           onClick={() => appWindow.close()}
-          className="w-8 h-8 flex items-center justify-center rounded hover:bg-red-500 hover:text-white transition"
+          className="w-8 h-8 flex items-center justify-center rounded text-gray-800 dark:text-gray-100 hover:bg-red-500 hover:text-white transition"
           {...(isTauri ? { 'data-tauri-drag-region': false } : {})}
           title="Закрыть"
         >

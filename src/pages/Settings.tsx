@@ -1,16 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  User, 
-  Bell, 
-  Shield, 
-  Palette, 
-  Globe, 
-  Download,
-  Trash2,
-  Save
-} from 'lucide-react';
+import { ArrowLeft, User, Bell, Shield, Palette, Globe, Download, Trash2, Save } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -115,7 +105,7 @@ const Settings: React.FC = () => {
   );
 
   return (
-    <div className="max-w-6xl mx-auto h-[calc(100vh-10rem)] overflow-auto px-2">
+    <div className="max-w-6xl mx-auto h-[calc(100vh-12rem)] overflow-auto px-2">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}

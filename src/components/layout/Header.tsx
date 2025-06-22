@@ -137,7 +137,6 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, darkMode, onThemeToggle })
         </div>
       </div>
 
-      {/* Закрытие меню при клике вне его */}
       {showProfileMenu && (
         <div
           className="fixed inset-0 z-40"

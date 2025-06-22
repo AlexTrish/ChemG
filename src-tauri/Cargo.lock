@@ -294,7 +294,7 @@ checksum = "9555578bc9e57714c812a1f84e4fc5b4d21fcb063490c624de019f7464c91268"
 
 [[package]]
 name = "chemg"
-version = "0.0.2"
+version = "0.0.4"
 dependencies = [
  "serde",
  "serde_json",

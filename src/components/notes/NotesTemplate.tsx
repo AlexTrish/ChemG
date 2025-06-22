@@ -1,20 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  BookOpen, 
-  Search, 
-  Bookmark, 
-  BookmarkCheck,
-  Type,
-  Palette,
-  Download,
-  Share,
-  Eye,
-  EyeOff,
-  Maximize,
-  Minimize
-} from 'lucide-react';
+import { ArrowLeft, BookOpen, Search, Bookmark, BookmarkCheck, Type, Palette, Download, Share, Eye, EyeOff, Maximize, Minimize } from 'lucide-react';
 
 interface NotesSection {
   id: string;

@@ -89,7 +89,12 @@ const AppContent: React.FC = () => {
   const location = useLocation();
 
   if (!isAuthenticated) {
-    return <AuthScreen />;
+    return (
+      <div className="h-[100vh] overflow-hidden bg-gray-50 dark:bg-gray-900">
+        <Titlebar />
+        <AuthScreen />
+      </div>
+    );
   }
 
   const handleTestComplete = (results: SingleTestResults | MultipleTestResults | TextInputTestResults) => {};
@@ -98,48 +103,50 @@ const AppContent: React.FC = () => {
   const isNotesPage = location.pathname === '/notes-example';
 
   return (
-    <div className={`h-[100vh] overflow-hidden bg-gray-50 dark:bg-gray-900${isNotesPage ? '' : ' select-none'}`}>
+    <div className="h-[100vh] overflow-hidden bg-gray-50 dark:bg-gray-900">
       <Titlebar />
-      <Layout>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/organic" element={<OrganicChemistry />} />
-            <Route path="/inorganic" element={<InorganicChemistry />} />
-            <Route path="/periodic" element={<PeriodicTable />} />
-            <Route path="/experiments" element={<Experiments />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/ai-chat" element={<AiChat />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route
-              path="/test-example"
-              element={
-                <SingleChoiceTest
-                  title={testExampleData.title}
-                  questions={testExampleData.questions}
-                  onComplete={handleTestComplete}
-                  onExit={handleNotesBack}
-                />
-              }
-            />
-            <Route
-              path="/notes-example"
-              element={
-                <NotesTemplate
-                  title={notesExampleData.title}
-                  subject={notesExampleData.subject}
-                  sections={notesExampleData.sections}
-                  onBack={handleNotesBack}
-                />
-              }
-            />
-          </Routes>
-        </motion.div>
-      </Layout>
+      <div className={`h-[calc(95vh)] overflow-hidden bg-gray-50 dark:bg-gray-900${isNotesPage ? '' : ' select-none'}`}>
+        <Layout>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/organic" element={<OrganicChemistry />} />
+              <Route path="/inorganic" element={<InorganicChemistry />} />
+              <Route path="/periodic" element={<PeriodicTable />} />
+              <Route path="/experiments" element={<Experiments />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/ai-chat" element={<AiChat />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route
+                path="/test-example"
+                element={
+                  <SingleChoiceTest
+                    title={testExampleData.title}
+                    questions={testExampleData.questions}
+                    onComplete={handleTestComplete}
+                    onExit={handleNotesBack}
+                  />
+                }
+              />
+              <Route
+                path="/notes-example"
+                element={
+                  <NotesTemplate
+                    title={notesExampleData.title}
+                    subject={notesExampleData.subject}
+                    sections={notesExampleData.sections}
+                    onBack={handleNotesBack}
+                  />
+                }
+              />
+            </Routes>
+          </motion.div>
+        </Layout>
+      </div>
     </div>
   );
 };
