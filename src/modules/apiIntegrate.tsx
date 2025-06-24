@@ -1,8 +1,6 @@
-// API Integration Module для ChemG
-// Все API запросы и эндпоинты будут здесь
-
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
+// Все API запросы и эндпоинты будут здесь
 // Типы данных
 export interface User {
   id: string;
