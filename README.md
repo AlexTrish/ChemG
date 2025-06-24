@@ -137,7 +137,7 @@ ChemG — это гибридная обучающая платформа для
 git clone https://github.com/AlexTrish/ChemG.git
 cd chem-learning-platform
 
-# Установите зависимости фронтенда
+# Установите зависимости
 npm install
 
 # Запуск разработки фронтенда
