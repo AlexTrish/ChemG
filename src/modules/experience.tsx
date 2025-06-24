@@ -1,6 +1,4 @@
-// Experience and Level System for ChemG
 // Система опыта и уровней для ChemG
-
 export interface LevelInfo {
   level: number;
   currentXP: number;
