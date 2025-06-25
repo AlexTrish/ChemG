@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, X, Maximize2, Minimize2, Filter } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { elements, Element } from '../components/infoModules/periodicTableInfo';
+import { elements, Element } from '../data/periodicData/ElementsJSON';
 
 const categories = [
   { key: 'alkali-metal', name: 'Щелочные металлы', color: '#FFE66D' },
