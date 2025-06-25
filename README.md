@@ -1,8 +1,8 @@
 <p align="center"><img src="https://i.ibb.co/GYGz2BK/Banner.png" alt="Banner" width="726"></p>
 <p align="center">
-	<img alt="Static Badge" src="https://img.shields.io/badge/engine-GodotEngine-blue?style=flat&link=https%3A%2F%2Fgodotengine.org%2F">
-	<img alt="GitHub Release" src="https://img.shields.io/github/v/release/AlexTrish/ChemG?color=yellowgreen&link=https%3A%2F%2Fgithub.com%2FAlexTrish%2FChemG%2Freleases%2Ftag%2Fv0.0.3-alpha">
-	<img alt="GitHub License" src="https://img.shields.io/github/license/AlexTrish/ChemG">
+	<a href="https://godotengine.org/"><img alt="Static Badge" src="https://img.shields.io/badge/engine-GodotEngine-blue?style=flat&link=https%3A%2F%2Fgodotengine.org%2F"></a>
+	<a href="https://github.com/AlexTrish/ChemG/releases"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/AlexTrish/ChemG?color=yellowgreen&link=https%3A%2F%2Fgithub.com%2FAlexTrish%2FChemG%2Freleases%2Ftag%2Fv0.0.3-alpha"></a>
+	<a href="https://github.com/AlexTrish/ChemG?tab=AGPL-3.0-1-ov-file#AGPL-3.0-1-ov-file"><img alt="GitHub License" src="https://img.shields.io/github/license/AlexTrish/ChemG"></a>
 </p>
 
 ## Технические особенности
