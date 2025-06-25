@@ -1,7 +1,9 @@
-# ChemG
-Программное обеспечение нацеленное на улучшения и упрощения в изучении школьной химии с 8-го по 11-й класс.
-
-![GitHub top language](https://img.shields.io/github/languages/top/AlexTrish/ChemG) ![GitHub](https://img.shields.io/github/license/AlexTrish/ChemG) ![GitHub Repo stars](https://img.shields.io/github/stars/AlexTrish/ChemG) ![GitHub issues](https://img.shields.io/github/issues/AlexTrish/ChemG)
+<p align="center"><img src="https://i.ibb.co/GYGz2BK/Banner.png" alt="Banner" width="726"></p>
+<p align="center">
+	<img alt="Static Badge" src="https://img.shields.io/badge/engine-GodotEngine-blue?style=flat&link=https%3A%2F%2Fgodotengine.org%2F">
+	<img alt="GitHub Release" src="https://img.shields.io/github/v/release/AlexTrish/ChemG?color=yellowgreen&link=https%3A%2F%2Fgithub.com%2FAlexTrish%2FChemG%2Freleases%2Ftag%2Fv0.0.3-alpha">
+	<img alt="GitHub License" src="https://img.shields.io/github/license/AlexTrish/ChemG">
+</p>
 
 ## Технические особенности
 
@@ -42,68 +44,8 @@ npm run tauri:dev
 просмотр конспектов по неорганической химии для 8-х классов, тестирования по
 пройденной теме.
 
-## Описание файлов проекта
-<table class="iksweb">
-	<tbody>
-		<tr>
-			<th>Название</th>
-			<th colspan="2">Описание</th>
-		</tr>
-		<tr>
-			<td rowspan="5">/src</td>
-			<td colspan="2">Это основная папка с исходным кодом фронтенд-приложения.</td>
-		</tr>
-		<tr>
-			<td>/components</td>
-			<td> Повторно используемые UI-компоненты — отдельные независимые или полузависимые элементы интерфейса.
-        <br/>
-        <br/>
-        <b>UI элементы:</b>
-        <br/>
-        <ul>
-          <li>Шапка - <code>navigation/Header.tsx</code>;</li> 
-          <li>Боковое меню - <code>navigation/Sidebar.tsx</code>;</li> 
-          <li>Поисковая строка - <code>navigation/Searchbar.tsx</code>;</li> <li>Горизонтальная полоса в верхней части окна приложения - <code>navigation/Titlebar.tsx</code>;</li>
-        </ul> 
-        <b>Шаблоны для коспектов и тестов с заполнением информации через JSON:</b>
-        <br/>
-        <ul>
-          <li>Шаблон конспектов - <code>/notes/NotesTemplate.tsx</code></li>
-          <li>Шаблон тестов с множественным выбором - <code>/tests/MultipleChoiceTest.tsx</code></li>
-          <li>Шаблон тестов с одним вариантом ответа - <code>/tests/SingleChoiceTest.tsx</code></li>
-          <li>Шаблон результатов теста - <code>/tests/TestResults.tsx</code></li> 
-          <li>Шаблон теста - <code>/tests/TestTemplate.tsx</code></li> 
-          <li>Шаблон тестов с вводом текста - <code>/tests/TextInputTest.tsx</code></li>
-        </ul> 
-        <b>Дополнительно:</b> 
-        <ul>
-          <li>Окно авторизации - <code>auth/AuthScreen.tsx</code>;</li> 
-          <li>Карточки <code>cards/ModuleCard.tsx</code>;</li>
-        </ul>
-        <br/> 
-      </td>
-		</tr>
-		<tr>
-			<td>/contexts</td>
-			<td>Провайдеры состояний, доступных всему приложению (Авторизация).</td>
-		</tr>
-		<tr>
-			<td>/modules</td>
-			<td> Логика и функциональность, сгруппированная по функциональным модулям (Взаимодействие с API, Механика с уровнями и опытом).</td>
-		</tr>
-		<tr>
-			<td>/pages</td>
-			<td>ницы приложения — корневые компоненты, которые привязаны к роутингу.</td>
-		</tr>
-		<tr>
-			<td>/src-tauri</td>
-			<td colspan="2">Это папка с исходным кодом и конфигурацией нативной части Tauri-приложения, которая работает на Rust.</td>
-		</tr>
-	</tbody>
-</table>
-
 ---
 
 ## Лицензия
 
-Это расширение распространяется под лицензией AGPL-3.0 license. Более подробная информация приведена в файле `LICENSE`.
+Эта программа распространяется под лицензией AGPL-3.0 license. Более подробная информация приведена в файле `LICENSE`.
