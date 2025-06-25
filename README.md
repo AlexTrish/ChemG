@@ -29,14 +29,18 @@
 ### Запуск из исходников (для разработчиков)
 
 ```bash
+# Клонируйте репозиторий
 git clone https://github.com/AlexTrish/ChemG.git
 cd ChemG
 
 # Установите зависимости
 npm install
 
-# Запуск разработки фронтенда
+# Запуск программы в dev режиме
 npm run tauri:dev
+
+# Сборка программы
+npm run tauri:build
 ```
 
 ## Что доступно в ChemG?
